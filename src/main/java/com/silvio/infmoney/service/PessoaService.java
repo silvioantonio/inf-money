@@ -5,13 +5,14 @@ import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import com.silvio.infmoney.model.Pessoa;
 import com.silvio.infmoney.repository.PessoaRepository;
 
 @Service
-public class PessoaService {
+public class PessoaService extends AbstractRestService<Pessoa, Long>{
 
 	@Autowired
 	private PessoaRepository pessoaRepository;
@@ -37,6 +38,11 @@ public class PessoaService {
 			throw new EmptyResultDataAccessException(1);
 		}
 		return pessoaSalva.get();
+	}
+	
+	@Override
+	public JpaRepository<Pessoa, Long> getRepository() {
+		return this.pessoaRepository;
 	}
 	
 }

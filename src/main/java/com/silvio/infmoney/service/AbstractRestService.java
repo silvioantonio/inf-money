@@ -1,7 +1,5 @@
 package com.silvio.infmoney.service;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public abstract class AbstractRestService<E, ID> {

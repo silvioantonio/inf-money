@@ -3,7 +3,6 @@ package com.silvio.infmoney.resource;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,11 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.silvio.infmoney.event.RecursoCriadoEvent;
@@ -59,6 +59,13 @@ public abstract class AbstractRestController <ID, T> {
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(t2);
 	}
+	
+	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void remover(@PathVariable ID id) {
+		this.getService().getRepository().deleteById(id);
+	}
+
 	
 	/**
 	 * Retorna um Objeto ID, que sera retirado de um objeto generico passado por parametro na assinatura do metodo,
