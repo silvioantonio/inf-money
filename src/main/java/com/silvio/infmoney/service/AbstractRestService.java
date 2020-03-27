@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public abstract class AbstractRestService<E, ID> {
 
-	public E save(E e) throws IllegalAccessException {
+	/*public E savei(E e) throws IllegalAccessException {
 		try {
 			return this.getRepository().save(e);
 		} catch (IllegalArgumentException e1) {
@@ -26,7 +26,7 @@ public abstract class AbstractRestService<E, ID> {
 	
 	public List<E> get(){
 		return this.getRepository().findAll();
-	}
+	}*/
 	
 	public abstract JpaRepository<E, ID> getRepository();
 	

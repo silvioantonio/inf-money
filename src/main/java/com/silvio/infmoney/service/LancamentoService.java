@@ -15,7 +15,7 @@ public class LancamentoService extends AbstractRestService<Lancamento, Long>{
 
 	@Override
 	public JpaRepository<Lancamento, Long> getRepository() {
-		return lancamentoRepository;
+		return this.lancamentoRepository;
 	}
 
 }

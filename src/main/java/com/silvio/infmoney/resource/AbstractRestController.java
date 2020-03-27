@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.silvio.infmoney.event.RecursoCriadoEvent;
@@ -35,7 +36,7 @@ public abstract class AbstractRestController <ID, T> {
 		return ResponseEntity.ok(this.getService().getRepository().findAll());
 	}
 	
-	@GetMapping("/{codigo}")
+	@GetMapping("/{id}")
 	public T buscaPorCodigo(@PathVariable ID id) {
 		Optional<T> t;
 		try {
@@ -62,8 +63,9 @@ public abstract class AbstractRestController <ID, T> {
 	/**
 	 * Retorna um Objeto ID, que sera retirado de um objeto generico passado por parametro na assinatura do metodo,
 	 * dessa forma é possivel passar qualquer model e retornar seu Id gerado apos salvar essa entidade no banco de dados.
-	 * @param Object objeto generico 
-	 * @return id referente ao objeto passado por parametro
+	 * É necessario que se faça um casting para {@link Long} nesse contexto.
+	 * @param Object - objeto generico 
+	 * @return Object - id referente ao objeto passado por parametro
 	 * @author silvio
 	 * @exception IllegalArgumentException - Caso seja passado um objeto Nulo
 	 */
