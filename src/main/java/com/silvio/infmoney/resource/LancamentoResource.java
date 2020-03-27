@@ -32,24 +32,6 @@ public class LancamentoResource extends AbstractRestController<Long, Lancamento>
 	@Autowired
 	private LancamentoService lancamentoService;
 	
-	@Autowired
-	private ApplicationEventPublisher publisher;
-	
-	
-	@PostMapping
-	public ResponseEntity<Lancamento> criarLancamento (@Valid @RequestBody Lancamento lancamento, HttpServletResponse response) {
-		Lancamento lancamentoSalvo = null;
-		try {
-			lancamentoSalvo = lancamentoService.save(lancamento);
-			publisher.publishEvent(new RecursoCriadoEvent(this, response, lancamentoSalvo.getCodigo()));
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		}
-		
-		return ResponseEntity.status(HttpStatus.CREATED).body(lancamentoSalvo);
-	}
-
-
 	@Override
 	public AbstractRestService<Lancamento, Long> getService() {
 		return this.lancamentoService;

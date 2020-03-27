@@ -15,6 +15,11 @@ public abstract class AbstractRestService<E, ID> {
 		
 	}
 	
+	public void delete(ID id) {
+		this.getById(id);
+		this.getRepository().deleteById(id);
+	}
+	
 	public E getById(ID id) {
 		return this.getRepository().getOne(id);
 	}
