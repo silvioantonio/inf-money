@@ -51,7 +51,7 @@ public abstract class AbstractRestController <ID, T> {
 	}
 	
 	@PostMapping
-	public ResponseEntity<T> criarLancamento (@Valid @RequestBody T t, HttpServletResponse response) throws NoSuchMethodException, SecurityException {
+	public ResponseEntity<T> salvar (@Valid @RequestBody T t, HttpServletResponse response)  {
 		T t2 = null;
 		t2 = this.getService().getRepository().save(t);
 		
@@ -65,7 +65,6 @@ public abstract class AbstractRestController <ID, T> {
 	public void remover(@PathVariable ID id) {
 		this.getService().getRepository().deleteById(id);
 	}
-
 	
 	/**
 	 * Retorna um Objeto ID, que sera retirado de um objeto generico passado por parametro na assinatura do metodo,
@@ -99,5 +98,6 @@ public abstract class AbstractRestController <ID, T> {
 
 	
 	public abstract AbstractRestService<T, ID> getService();
+
 	
 }

@@ -32,7 +32,7 @@ public class PessoaService extends AbstractRestService<Pessoa, Long>{
 		pessoaRepository.save(pessoaSalva);
 	}
 	
-	private Pessoa buscarPessoaPeloCodigo(Long id) {
+	public Pessoa buscarPessoaPeloCodigo(Long id) {
 		Optional<Pessoa> pessoaSalva = pessoaRepository.findById(id);
 		if(pessoaSalva == null) {
 			throw new EmptyResultDataAccessException(1);
