@@ -99,5 +99,5 @@ public abstract class AbstractRestController <ID, T> {
 	
 	public abstract AbstractRestService<T, ID> getService();
 
-	
+		
 }

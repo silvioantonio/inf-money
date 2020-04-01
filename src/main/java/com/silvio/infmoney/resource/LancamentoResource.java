@@ -15,7 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,14 +39,14 @@ public class LancamentoResource extends AbstractRestController<Long, Lancamento>
 	
 	@Autowired
 	private MessageSource messageSource;
-	
-	@GetMapping
+		
+
+	@GetMapping("/filter")
 	public List<Lancamento> listarTodos(LancamentoFilter lancamentoFilter) {
 		return lancamentoService.pesquisar(lancamentoFilter);
 	}
 	
 	@Override
-	@PostMapping
 	public ResponseEntity<Lancamento> salvar(@Valid @RequestBody Lancamento t, HttpServletResponse response) {
 		
 			Lancamento lancamento = lancamentoService.salvarLancamento(t);
