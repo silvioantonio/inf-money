@@ -12,6 +12,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,8 +34,8 @@ public abstract class AbstractRestController <ID, T> {
 	private ApplicationEventPublisher publisher;
 	
 	@GetMapping
-	public ResponseEntity<List<T>> listarTodos() {
-		return ResponseEntity.ok(this.getService().getRepository().findAll());
+	public Page<T> listarTodos(Pageable pageable) {
+		return this.getService().getRepository().findAll(pageable);
 	}
 	
 	@GetMapping("/{id}")
