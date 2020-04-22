@@ -22,9 +22,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.silvio.infmoney.exceptionhandler.InfmoneyExceptionHandler.Erro;
-import com.silvio.infmoney.service.exception.PessoaInexistenteOuInativaException;
-
 
 /**
  * Classe responsavel por gerar menssagem para erros de leitura na entrada de dados do codigo.

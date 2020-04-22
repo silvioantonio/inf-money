@@ -39,8 +39,7 @@ public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery{
 		return query.getResultList();
 	}
 
-	private Predicate[] criarRestricoes(LancamentoFilter lancamentoFilter, CriteriaBuilder builder,
-			Root<Lancamento> root) {
+	private Predicate[] criarRestricoes(LancamentoFilter lancamentoFilter, CriteriaBuilder builder,Root<Lancamento> root) {
 		
 		List<Predicate> predicates = new ArrayList<>();
 		
